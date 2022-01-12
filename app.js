@@ -6,6 +6,12 @@ fetch('https://api.github.com/users/anioji94')
 		.catch( error => console.error(error));
 
 console.log(divOutput)
-	let howdy = (input = "Ani") => {
-		divOutput.innerHTML += `Hello, I am ${input}`;
-	}
+let howdy = (input = "Ani") => {
+	divOutput.innerHTML += `Hello, I am ${input}<br/>`;
+}
+
+let clearDiv = () => {
+	divOutput.innerText = '';
+	console.log('clear')
+}
+
