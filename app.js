@@ -1,19 +1,19 @@
 let divOutput = document.getElementById('test')
 let usernameField = document.getElementById('username')
-
+let defaultUser = 'defunkt'
 // Housekeeping Functions
 
-function usernameCheck() {
-	if(!usernameField.value) {
-		username = 'defunkt'
-	} else {
-		username = usernameField.value
-	}
-}
+// function usernameCheck() {
+// 	if(!usernameField.value) {
+// 		username = 'defunkt'
+// 	} else {
+// 		username = usernameField.value
+// 	}
+// }
 
-function usernameClear() {
-	username = ""
-}
+// function usernameClear() {
+// 	username = ""
+// }
 
 function usernameFieldClear() {
 	usernameField.value = ''
@@ -26,10 +26,10 @@ let clearDiv = () => {
 
 // Test Functions
 
-let howdy = () => {
-	usernameCheck()
+let howdy = (username = defaultUser) => {
+	// usernameCheck()
 	divOutput.innerHTML += `Hello, I am ${username}<br/>`;
-	usernameClear();
+	// usernameClear();
 	usernameFieldClear();
 }
 
@@ -47,8 +47,8 @@ function test() {
 
 let userURL = "https://api.github.com/users/"
 
-async function getUserProfile() {
-	usernameCheck();
+async function getUserProfile(username = defaultUser) {
+	// usernameCheck();
 
 	// fetch(userURL + username)
 	// 	.then(userURL => userURL.text())
@@ -58,7 +58,16 @@ async function getUserProfile() {
 	let userInfoText = await userInfo.text()
 	console.log(userInfoText)
 	
-	usernameClear();
+	// usernameClear();
+	usernameFieldClear();
+}
+
+async function getUserRepos(username = defaultUser) {
+
+	let userInfo = await fetch(userURL + username + '/repos')
+	let userInfoText = await userInfo.text()
+	console.log(userInfoText)
+
 	usernameFieldClear();
 }
 
