@@ -47,7 +47,7 @@ function test() {
 
 let userURL = "https://api.github.com/users/"
 
-function getUserProfile() {
+async function getUserProfile() {
 	usernameCheck();
 
 	// fetch(userURL + username)
